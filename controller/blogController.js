@@ -1,24 +1,10 @@
 const Joi = require("joi");
 const fs = require("fs");
 const Blog = require("../models/blog");
-const {
-  BACKEND_SERVER_PATH,
-  CLOUD_NAME,
-  API_SECRET,
-  API_KEY,
-} = require("../config/index");
 const BlogDTO = require("../DTO/blog");
 const BlogDetailsDTO = require("../DTO/blog-details");
 const Comment = require("../models/comment");
 
-// const cloudinary = require("cloudinary").v2;
-
-// Configuration
-// cloudinary.config({
-//   cloud_name: CLOUD_NAME,
-//   api_key: API_KEY,
-//   api_secret: API_SECRET,
-// });
 
 const mongodbIdPattern = /^[0-9a-fA-F]{24}$/;
 
