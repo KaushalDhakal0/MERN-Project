@@ -10,5 +10,7 @@ content-type: application/json
 
 {
     "name": "Kaushal",
-    "password": "secretPassword"
+    "password": "secretPasswonnbrd",
+    "username": "Kaushal Dhakal",
+    "email":"kaushaldhakal40@gmail.com"
 }
