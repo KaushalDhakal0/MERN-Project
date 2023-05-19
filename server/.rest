@@ -9,19 +9,19 @@
 # content-type: application/json
 
 # {
-#     "name": "Dikesh123",
-#     "password": "Dikesh1a23@",
-#     "username": "Dikesh123@",
-#     "email": "dikes123sdh@gmail.com",
-#     "confirmPassword":"Dikesh1a23@"
+#     "name": "Paru",
+#     "password": "Paru123@",
+#     "username": "Paru123",
+#     "email": "paru@gmail.com",
+#     "confirmPassword":"Paru123@"
 # }
 
 POST http://localhost:8080/login 
 content-type: application/json
 
 {
-    "username": "Dikesh123@",
-    "password": "Dikesh1a23@"
+    "username": "Paru123",
+    "password": "Paru123@"
 }
 
 # POST http://localhost:8080/logout
