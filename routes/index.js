@@ -1,36 +1,47 @@
 const express = require('express');
-const {getAllBlogs} = require('../controller/blogController');
-const {login,logout,refresh,register} = require('../controller/authController');
+const cors = require('cors');
+const auth = require("../middlewares/auth");
+const {AuthController, blogController, commentController} = require("../controller");
+
 
 
 //Initialize Router Object
 const router = express.Router();
 
 //Registering User
-router.post('/register', register);
+router.post('/register', AuthController.register);
 
 //Login
-router.post('/login', login);
+router.post('/login', AuthController.login);
 
 //Logout
-router.post('/logout', logout);
+router.post('/logout',auth, AuthController.logout);
 
 //Refresh
-router.get('/refresh', refresh);
+router.get('/refresh', AuthController.refresh);
 
 
-//Blog Routes[CRUD operations]
+router.post('/blog', auth, blogController.create);
 
+// get all
+router.get('/blog/all', auth, blogController.getAll);
 
+// get blog by id
+router.get('/blog/:id', auth, blogController.getById);
 
+// update
+router.put('/blog', auth, blogController.update);
 
+// delete
+router.delete('/blog/:id', auth, blogController.delete);
 
-//Comment Routes[Create and Read Comment by blogId]
+// comment
+// create 
+router.post('/comment', auth, commentController.create);
 
+// get 
+router.get('/comment/:id', auth, commentController.getById);
 
-
-
-router.get('/blogs', getAllBlogs);
 
 
 
