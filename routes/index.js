@@ -1,13 +1,22 @@
 const express = require('express');
 const {getAllBlogs} = require('../controller/blogController');
-const {login} = require('../controller/authController');
-//Initialize Router Object
+const {login,logout,refresh,register} = require('../controller/authController');
 
+
+//Initialize Router Object
 const router = express.Router();
 
-//Authentication Routes[login,register,logout,refresh]
-router.post('/login', login)
+//Registering User
+router.post('/register', register);
 
+//Login
+router.post('/login', login);
+
+//Logout
+router.post('/logout', logout);
+
+//Refresh
+router.get('/refresh', refresh);
 
 
 //Blog Routes[CRUD operations]

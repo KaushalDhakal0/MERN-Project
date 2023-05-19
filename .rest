@@ -5,12 +5,21 @@
 # http://localhost:8080/blogs
 
 
+# POST http://localhost:8080/register 
+# content-type: application/json
+
+# {
+#     "name": "DUMMY",
+#     "password": "Lam@assdaaW123",
+#     "username": "Dummy@we2341",
+#     "email": "test@gasdamail.com",
+#     "confirmPassword":"Lam@assdaaW123"
+# }
+
 POST http://localhost:8080/login 
 content-type: application/json
 
 {
-    "name": "Kaushal",
-    "password": "secretPasswonnbrd",
-    "username": "Kaushal Dhakal",
-    "email":"kaushaldhakal40@gmail.com"
+    "username": "Dummy@we2341",
+    "password": "Lam@assdaaW123"
 }
