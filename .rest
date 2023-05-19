@@ -9,17 +9,25 @@
 # content-type: application/json
 
 # {
-#     "name": "DUMMY",
-#     "password": "Lam@assdaaW123",
-#     "username": "Dummy@we2341",
-#     "email": "test@gasdamail.com",
-#     "confirmPassword":"Lam@assdaaW123"
+#     "name": "Dikesh123",
+#     "password": "Dikesh1a23@",
+#     "username": "Dikesh123@",
+#     "email": "dikes123sdh@gmail.com",
+#     "confirmPassword":"Dikesh1a23@"
 # }
 
 POST http://localhost:8080/login 
 content-type: application/json
 
 {
-    "username": "Dummy@we2341",
-    "password": "Lam@assdaaW123"
+    "username": "Dikesh123@",
+    "password": "Dikesh1a23@"
 }
+
+# POST http://localhost:8080/logout
+# content-type: application/json
+
+# {
+#     "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDY3YTgyY2I4Y2ZhYTBhM2E0YWNiZmMiLCJpYXQiOjE2ODQ1MTU2NTAsImV4cCI6MTY4NDUxOTI1MH0.57a3YE03rAHOQnOp-i7ZooVLo_NIJz3kyB3oB0rmxjY"
+# }
+
