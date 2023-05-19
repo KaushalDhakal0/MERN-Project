@@ -1,7 +1,7 @@
 const express = require('express');
 const { PORT } = require('./config');
 const connectToDb = require('./database/index')
-
+const router = require('./routes/index');
 //Initializing App
 const app = express();
 
@@ -10,6 +10,10 @@ const app = express();
 app.use(express.json({ limit: "40mb" }));
 
 connectToDb();
+
+
+
+app.use(router);
 
 app.listen(PORT, () => {
     console.log(`Listening on port : ${PORT}`);

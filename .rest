@@ -1,0 +1,14 @@
+# http://localhost:8080/
+
+
+
+# http://localhost:8080/blogs
+
+
+POST http://localhost:8080/login 
+content-type: application/json
+
+{
+    "name": "Kaushal",
+    "password": "secretPassword"
+}
