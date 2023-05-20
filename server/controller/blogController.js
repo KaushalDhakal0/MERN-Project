@@ -36,12 +36,9 @@ const blogController = {
 
     // allot a random name
     const imagePath = `${Date.now()}-${author}.png`;
-
-    // save to cloudinary
     let response;
 
     try {
-    //   response = await cloudinary.uploader.upload(photo);
       fs.writeFileSync(`storage/${imagePath}`, buffer);
     } catch (error) {
       return next(error);

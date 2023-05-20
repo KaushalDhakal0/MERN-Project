@@ -1,4 +1,3 @@
-const bcrypt = require("bcrypt");
 const User = require("../models/user");
 const RefreshToken = require("../models/token");
 const { respond } = require("../utils/respond.js");
@@ -118,7 +117,7 @@ const refresh = async (req, res, next) => {
     let id;
 
     try {
-      id = JWTService.verifyRefreshToken(originalRefreshToken)._id;
+      id = AuthService.verifyRefreshToken(originalRefreshToken)._id;
     } catch (e) {
       const error = {
         status: 401,
