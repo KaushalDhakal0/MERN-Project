@@ -26,18 +26,17 @@ function Login() {
     if (response.status === 200) {
       // 1. setUser
       const user = {
-        _id: response.data.user._id,
-        email: response.data.user.email,
-        username: response.data.user.username,
+        _id: response.data.data._id,
+        email: response.data.data.email,
+        username: response.data.data.username,
         auth: response.data.auth,
       };
-
       dispatch(setUser(user));
       // 2. redirect -> homepage
       navigate("/");
     } else if (response.code === "ERR_BAD_REQUEST") {
       // display error message
-      setError(response.response.data.message);
+      setError(response.data.message);
     }
   };
 

@@ -1,9 +1,22 @@
 const Joi = require("joi");
 const fs = require("fs");
 const Blog = require("../models/blog");
+const {
+  CLOUD_NAME,
+  API_SECRET,
+  API_KEY,
+} = require("../config/index");
 const BlogDTO = require("../DTO/blog");
 const BlogDetailsDTO = require("../DTO/blog-details");
 const Comment = require("../models/comment");
+const cloudinary = require("cloudinary").v2;
+
+// Configuration
+cloudinary.config({
+  cloud_name: CLOUD_NAME,
+  api_key: API_KEY,
+  api_secret: API_SECRET,
+});
 
 
 const mongodbIdPattern = /^[0-9a-fA-F]{24}$/;
@@ -29,18 +42,21 @@ const blogController = {
     const { title, author, content, photo } = req.body;
 
     // read as buffer
-    const buffer = Buffer.from(
-      photo.replace(/^data:image\/(png|jpg|jpeg);base64,/, ""),
-      "base64"
-    );
+    // const buffer = Buffer.from(
+    //   photo.replace(/^data:image\/(png|jpg|jpeg);base64,/, ""),
+    //   "base64"
+    // );
 
     // allot a random name
-    const imagePath = `${Date.now()}-${author}.png`;
+    // const imagePath = `${Date.now()}-${author}.png`;
     let response;
 
     try {
-      fs.writeFileSync(`storage/${imagePath}`, buffer);
+      // fs.writeFileSync(`storage/${imagePath}`, buffer);
+      response = await cloudinary.uploader.upload(photo);
+
     } catch (error) {
+      console.log("-=->",error);
       return next(error);
     }
 
@@ -51,7 +67,7 @@ const blogController = {
         title,
         author,
         content,
-        photoPath: response.url,
+        photoPath:  response.url,
       });
 
       await newBlog.save();
@@ -139,23 +155,23 @@ const blogController = {
 
       previousPhoto = previousPhoto.split("/").at(-1);
 
-      // delete photo
-      fs.unlinkSync(`storage/${previousPhoto}`);
+      // // delete photo
+      // fs.unlinkSync(`storage/${previousPhoto}`);
 
-      // read as buffer
-      const buffer = Buffer.from(
-        photo.replace(/^data:image\/(png|jpg|jpeg);base64,/, ""),
-        "base64"
-      );
+      // // read as buffer
+      // const buffer = Buffer.from(
+      //   photo.replace(/^data:image\/(png|jpg|jpeg);base64,/, ""),
+      //   "base64"
+      // );
 
-      // allot a random name
-      const imagePath = `${Date.now()}-${author}.png`;
+      // // allot a random name
+      // const imagePath = `${Date.now()}-${author}.png`;
 
       // save locally
       let response;
       try {
-        // response = await cloudinary.uploader.upload(photo);
-        fs.writeFileSync(`storage/${imagePath}`, buffer);
+        response = await cloudinary.uploader.upload(photo);
+        // fs.writeFileSync(`storage/${imagePath}`, buffer);
       } catch (error) {
         return next(error);
       }

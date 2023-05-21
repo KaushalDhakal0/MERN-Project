@@ -1,6 +1,6 @@
 import * as yup from "yup";
 
-const passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,25}$/;
+// const passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,25}$/;
 
 const erroMessage = "use lowercase, uppercase and digits";
 
@@ -10,7 +10,7 @@ const loginSchema = yup.object().shape({
     .string()
     .min(8)
     .max(25)
-    .matches(passwordPattern, { message: erroMessage })
+    .matches( { message: erroMessage })
     .required(),
 });
 

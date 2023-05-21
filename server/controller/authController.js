@@ -88,13 +88,18 @@ const login = async (req, res, next) => {
     user = await loginUser(username, password);
     const { accessToken, refreshToken } = await generateTokens(user);
     res = await setCookies(accessToken, refreshToken, res);
-    return respond(
-      res,
-      STATUS.SUCCESS,
-      "Login Successful",
-      new UserDTO(user),
-      ""
-    );
+    // return respond(
+    //   res,
+    //   STATUS.SUCCESS,
+    //   "Login Successful",
+    //   new UserDTO(user),
+    //   "",
+    //   {...auth:true}
+    // );
+    return res.status(STATUS.SUCCESS).json({
+      data:new UserDTO(user),
+      auth:true
+    })
   } catch (error) {
     return next(error);
   }

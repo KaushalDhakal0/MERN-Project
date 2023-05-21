@@ -18,7 +18,7 @@ import Loader from "./components/Loader/Loader";
 
 function App() {
   const isAuth = useSelector((state) => state.user.auth);
-
+  console.log("====>",isAuth);
   const loading = useAutoLogin();
 
   return loading ? (
