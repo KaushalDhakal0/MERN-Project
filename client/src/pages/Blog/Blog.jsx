@@ -12,10 +12,10 @@ function Blog() {
   useEffect(() => {
     (async function getAllBlogsApiCall() {
       const response = await getAllBlogs();
-      console.log("====RESPONSE=======>",response);
+      // console.log("====RESPONSE=======>",response);
       if (response.status === 200) {
         setBlogs(response.data.blogs);
-        console.log("====",response.data.blogs);
+        // console.log("====",response.data.blogs);
         console.log("sss",__dirname)
       }
     })();
